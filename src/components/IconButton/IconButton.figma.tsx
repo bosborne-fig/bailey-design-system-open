@@ -1,16 +1,12 @@
 import figma from "@figma/code-connect";
-import { Button } from "./Button";
+import { IconButton } from "./IconButton";
 
 figma.connect(
-  Button,
-  "https://www.figma.com/design/c4VV6jI6HampBlMkytyoBp/Bailey-Design-System?node-id=4185-3778",
+  IconButton,
+  "https://www.figma.com/design/c4VV6jI6HampBlMkytyoBp/Bailey-Design-System?node-id=11-11508",
   {
     props: {
-      label: figma.string("Label"),
-      hasIconStart: figma.boolean("Has Icon Start"),
-      hasIconEnd: figma.boolean("Has Icon End"),
-      iconStart: figma.instance("Icon Start"),
-      iconEnd: figma.instance("Icon End"),
+      icon: figma.instance("Icon"),
       variant: figma.enum("Variant", {
         Primary: "primary",
         Neutral: "neutral",
@@ -26,6 +22,6 @@ figma.connect(
         Small: "small",
       }),
     },
-    example: (props) => <Button {...props} />,
+    example: (props) => <IconButton aria-label="Action" {...props} />,
   },
 );

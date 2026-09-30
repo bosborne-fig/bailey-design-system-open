@@ -1,36 +1,34 @@
 import { ButtonHTMLAttributes, ReactNode, forwardRef } from "react";
 import clsx from "clsx";
 
-export type ButtonVariant = "primary" | "neutral" | "subtle";
-export type ButtonSize = "medium" | "small";
-export type ButtonState = "default" | "hover" | "disabled";
+export type ButtonDangerVariant = "primary" | "subtle";
+export type ButtonDangerSize = "medium" | "small";
+export type ButtonDangerState = "default" | "hover" | "disabled";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonDangerProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string;
   iconStart?: ReactNode;
   iconEnd?: ReactNode;
   hasIconStart?: boolean;
   hasIconEnd?: boolean;
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  state?: ButtonState;
+  variant?: ButtonDangerVariant;
+  size?: ButtonDangerSize;
+  state?: ButtonDangerState;
 }
 
-const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    "bg-brand-600 text-white hover:bg-brand-700 focus-visible:ring-brand-500",
-  neutral:
-    "bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 focus-visible:ring-gray-400",
+const variantClasses: Record<ButtonDangerVariant, string> = {
+  primary: "bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500",
   subtle:
-    "bg-transparent text-gray-900 hover:bg-gray-100 focus-visible:ring-gray-400",
+    "bg-transparent text-red-700 hover:bg-red-50 focus-visible:ring-red-400",
 };
 
-const sizeClasses: Record<ButtonSize, string> = {
+const sizeClasses: Record<ButtonDangerSize, string> = {
   small: "h-8 px-3 text-sm gap-1.5",
   medium: "h-10 px-4 text-sm gap-2",
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const ButtonDanger = forwardRef<HTMLButtonElement, ButtonDangerProps>(
   (
     {
       label,
@@ -48,11 +46,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const isDisabled = disabled ?? state === "disabled";
     return (
       <button
         ref={ref}
-        disabled={isDisabled}
+        disabled={disabled ?? state === "disabled"}
         className={clsx(
           "inline-flex items-center justify-center rounded-md font-medium transition-colors",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
@@ -71,4 +68,4 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 
-Button.displayName = "Button";
+ButtonDanger.displayName = "ButtonDanger";

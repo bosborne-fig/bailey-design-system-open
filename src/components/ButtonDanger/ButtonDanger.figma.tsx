@@ -1,9 +1,9 @@
 import figma from "@figma/code-connect";
-import { Button } from "./Button";
+import { ButtonDanger } from "./ButtonDanger";
 
 figma.connect(
-  Button,
-  "https://www.figma.com/design/c4VV6jI6HampBlMkytyoBp/Bailey-Design-System?node-id=4185-3778",
+  ButtonDanger,
+  "https://www.figma.com/design/c4VV6jI6HampBlMkytyoBp/Bailey-Design-System?node-id=185-852",
   {
     props: {
       label: figma.string("Label"),
@@ -13,7 +13,6 @@ figma.connect(
       iconEnd: figma.instance("Icon End"),
       variant: figma.enum("Variant", {
         Primary: "primary",
-        Neutral: "neutral",
         Subtle: "subtle",
       }),
       state: figma.enum("State", {
@@ -26,6 +25,6 @@ figma.connect(
         Small: "small",
       }),
     },
-    example: (props) => <Button {...props} />,
+    example: (props) => <ButtonDanger {...props} />,
   },
 );
